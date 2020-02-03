@@ -21,11 +21,9 @@ class MainActivity : AppCompatActivity(), ShakeDetector.Listener {
         setContentView(R.layout.activity_main)
 
 
-
         button.setOnClickListener {
           showDice()
         }
-
 
 
         shakeDetector = ShakeDetector(this)
@@ -61,14 +59,11 @@ class MainActivity : AppCompatActivity(), ShakeDetector.Listener {
                 return@runOnUiThread
             }
             showDice()
-
-            vibrate()
         }
     }
 
-    fun showDice() {
-        val randNum =  Random.nextInt(1, 6)
-        val dieToShow= when(randNum) {
+    private fun showDice() {
+        val dieToShow= when(Random.nextInt(1, 6)) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -78,6 +73,7 @@ class MainActivity : AppCompatActivity(), ShakeDetector.Listener {
             else -> 0
         }
         dice_view.setImageResource(dieToShow)
+        vibrate()
     }
 
 }
