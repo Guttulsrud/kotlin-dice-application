@@ -21,8 +21,21 @@ class MainActivity : AppCompatActivity(), ShakeDetector.Listener {
         setContentView(R.layout.activity_main)
 
         button.setOnClickListener {
-            textView.text = Random.nextInt(1, 6).toString()
+            val randNum =  Random.nextInt(1, 6)
+            val dieToShow= when(randNum) {
+                1 -> R.drawable.dice_1
+                2 -> R.drawable.dice_2
+                3 -> R.drawable.dice_3
+                4 -> R.drawable.dice_4
+                5 -> R.drawable.dice_5
+                6 -> R.drawable.dice_6
+                else -> 0
+            }
+            dice_view.setImageResource(dieToShow)
+
         }
+
+
 
         shakeDetector = ShakeDetector(this)
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
